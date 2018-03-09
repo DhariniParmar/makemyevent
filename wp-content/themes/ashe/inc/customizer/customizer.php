@@ -16,9 +16,6 @@ function ashe_customize_register( $wp_customize ) {
 	// select
 	function ashe_sanitize_select( $input, $setting ) {
 		
-		// check for slug
-		$input = sanitize_key( $input );
-		
 		// get all select options
 		$options = $setting->manager->get_control( $setting->id )->choices;
 		
@@ -509,6 +506,9 @@ function ashe_customize_register( $wp_customize ) {
 ** Site Identity =====
 */
 
+	$wp_customize->get_setting( 'blogname' )->transport          = 'postMessage';
+	$wp_customize->get_setting( 'blogdescription' )->transport   = 'postMessage';
+
 	// Logo Width
 	ashe_number_absint_control( 'title_tagline', 'logo_width', esc_html__( 'Width', 'ashe' ), array( 'step' => '10' ), 'postMessage', 8 );
 
@@ -558,6 +558,9 @@ function ashe_customize_register( $wp_customize ) {
 
 	// Show Sidebar Icon
 	ashe_checkbox_control( 'main_nav', 'show_sidebar', esc_html__( 'Show Sidebar Icon', 'ashe' ), 'refresh', 15 );
+	
+	// Merge to Responsive Menu
+	ashe_checkbox_control( 'main_nav', 'merge_menu', esc_html__( 'Merge to Responsive Menu', 'ashe' ), 'refresh', 17 );
 
 
 /*
@@ -854,6 +857,45 @@ function ashe_customize_register( $wp_customize ) {
 
 	// Social #4 Icon
 	ashe_url_control( 'social_media', 'url_4', esc_html__( 'URL', 'ashe' ), 'refresh', 17 );
+
+
+/*
+** Typography =====
+*/
+	// add Typography section
+	$wp_customize->add_section( 'ashe_typography' , array(
+		'title'		 => esc_html__( 'Typography', 'ashe' ),
+		'priority'	 => 34,
+		'capability' => 'edit_theme_options'
+	) );
+
+	$font_family = array(
+		'Open+Sans' => esc_html__( 'Open Sans', 'ashe' ),
+		'Rokkitt' 	=> esc_html__( 'Rokkitt', 'ashe' ),
+		'Kalam' 	=> esc_html__( 'Kalam', 'ashe' )
+	);
+
+	// Logo Font Family
+	ashe_select_control( 'typography', 'logo_family', esc_html__( 'Font Family', 'ashe' ), $font_family, 'refresh', 1 );
+
+	// Navigation Font Family
+	ashe_select_control( 'typography', 'nav_family', esc_html__( 'Font Family', 'ashe' ), $font_family, 'refresh', 5 );
+
+	// Pro Version
+	$wp_customize->add_setting( 'pro_version_typography', array(
+		'sanitize_callback' => 'ashe_sanitize_custom_control'
+	) );
+	$wp_customize->add_control( new Ashe_Customize_Pro_Version ( $wp_customize,
+			'pro_version_typography', array(
+				'section'	  => 'ashe_typography',
+				'type'		  => 'pro_options',
+				'label' 	  => esc_html__( 'Typography Options', 'ashe' ),
+				'description' => esc_html( 'wp-royal.com/themes/ashe/customizer/free/typography-logo.html?ref=ashe-free-typography-customizer' ),
+				'priority'	  => 10
+			)
+		)
+	);
+
 
 
 /*

@@ -1,4 +1,5 @@
 <?php if ( ashe_options( 'main_nav_label' ) === true ) : ?>
+
 <div id="main-nav" class="clear-fix">
 
 	<div <?php echo esc_attr(ashe_options( 'general_header_width' )) === 'contained' ? 'class="boxed-wrapper"': ''; ?>>	
@@ -26,12 +27,6 @@
 			<?php endif; ?>
 		</div>
 
-
-		<!-- Menu -->
-		<span class="mobile-menu-btn">
-			<i class="fa fa-chevron-down"></i>
-		</span>
-
 		<?php // Navigation Menus
 
 		wp_nav_menu( array(
@@ -43,13 +38,42 @@
 			'fallback_cb' 		=> 'ashe_main_menu_fallback'
 		) );
 
+		?>
+
+		<!-- Mobile Menu Button -->
+		<span class="mobile-menu-btn">
+			<i class="fa fa-chevron-down"></i>
+		</span>
+
+		<?php
+		
+		$mobile_menu_location = 'main';
+		$mobile_menu_items = '';
+
+		if ( ashe_options( 'main_nav_merge_menu' ) === true ) {
+			$mobile_menu_items = wp_nav_menu( array(
+				'theme_location' => 'top',
+				'container'		 => '',
+				'items_wrap' 	 => '%3$s',
+				'echo'			 => false,
+				'fallback_cb'	 => false,
+			) );
+
+			if ( ! has_nav_menu('main') ) {
+				$mobile_menu_location = 'top';
+				$mobile_menu_items = '';
+			}
+		}
+		
+
 		wp_nav_menu( array(
-			'theme_location' 	=> 'main',
+			'theme_location' 	=> $mobile_menu_location,
 			'menu_id'        	=> 'mobile-menu',
 			'menu_class' 		=> '',
 			'container' 	 	=> 'nav',
 			'container_class'	=> 'mobile-menu-container',
-			'fallback_cb' 		=> false
+			'items_wrap' 		=> '<ul id="%1$s" class="%2$s">%3$s '. $mobile_menu_items .'</ul>',
+			'fallback_cb'	    => false,
 		) );
 
 		?>

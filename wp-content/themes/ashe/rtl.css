@@ -100,7 +100,7 @@ table td {
 
 
 /* Content */
-.post-content > p:first-child:first-letter {
+.post-content > p:first-of-type:first-letter {
 	float: right !important;
 	margin: 0px 0 0 12px !important;
 }

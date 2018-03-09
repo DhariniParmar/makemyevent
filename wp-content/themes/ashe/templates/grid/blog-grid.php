@@ -13,6 +13,9 @@
 
 			the_post();
 
+			// if is preview (boat post)
+			if ( ! ( ashe_is_preview() && get_the_ID() == 19 ) ) :
+
 			echo '<li>';
 
 			?>
@@ -96,6 +99,8 @@
 			<?php
 
 			echo '</li>';
+
+			endif;
 
 		endwhile; // Loop End
 

@@ -57,6 +57,19 @@ function ashe_true_false( $option ) {
 		}
 	';
 
+	if ( ashe_options( 'main_nav_label' ) === true || ! has_nav_menu('top') ) {
+		$css .= "
+		@media screen and ( max-width: 979px ) {
+			.top-bar-socials {
+				float: none !important;
+			}
+
+			.top-bar-socials a {
+				line-height: 40px !important;
+			}
+		}";
+	}
+
 	// Page Header
 	$header_text_color = get_header_textcolor();
 
@@ -406,6 +419,37 @@ function ashe_true_false( $option ) {
 		}
 	';
 
+
+/*
+** Typography =====
+*/
+	// Logo & Tagline
+	$css .= "
+		.header-logo {
+			font-family: '". str_replace( '+', ' ', ashe_options( 'typography_logo_family' ) ) ."';
+		}
+	";
+
+	// Top Bar
+	$css .= "
+		#top-menu li a {
+			font-family: '". str_replace( '+', ' ', ashe_options( 'typography_nav_family' ) ) ."';
+		}
+	";
+
+	// Main Navigation
+	$css .= "	
+		#main-menu li a {
+			font-family: '". str_replace( '+', ' ', ashe_options( 'typography_nav_family' ) ) ."';
+		}
+
+		#mobile-menu li {
+			font-family: '". str_replace( '+', ' ', ashe_options( 'typography_nav_family' ) ) ."';
+		}
+	";
+
+
+
 /*
 ** General Layouts =====
 */
@@ -424,7 +468,7 @@ function ashe_true_false( $option ) {
 	// Sidebar Width
 	$css .= '
 		.sidebar-alt {
-			width: '. ( (int)ashe_options( 'general_sidebar_width' ) + 70 ) .'px;
+			max-width: '. ( (int)ashe_options( 'general_sidebar_width' ) + 70 ) .'px;
 			left: -'. ( (int)ashe_options( 'general_sidebar_width' ) + 70 ) .'px; 
 			padding: 85px 35px 0px;
 		}
@@ -588,7 +632,7 @@ function ashe_true_false( $option ) {
 		esc_url(ashe_options( 'featured_links_image_3' ))
 	);
 
-	$featured_links = ( ashe_is_preview() ) ? 3 : count( array_filter( $featured_links ) );
+	$featured_links = count( array_filter( $featured_links ) );
 	$featured_links_gutter = 0;
 
 	// Gutter	
@@ -610,7 +654,7 @@ function ashe_true_false( $option ) {
 		}
 	';
 
-	if ( ashe_options( 'featured_links_title_1' ) === '' && ! ashe_is_preview() ) {
+	if ( ashe_options( 'featured_links_title_1' ) === '' ) {
 		$css .= '
 			.featured-link:nth-child(1) .cv-inner {
 			    display: none;
@@ -618,7 +662,7 @@ function ashe_true_false( $option ) {
 		';
 	}
 
-	if ( ashe_options( 'featured_links_title_2' ) === '' && ! ashe_is_preview() ) {
+	if ( ashe_options( 'featured_links_title_2' ) === '' ) {
 		$css .= '
 			.featured-link:nth-child(2) .cv-inner {
 			    display: none;
@@ -626,7 +670,7 @@ function ashe_true_false( $option ) {
 		';
 	}
 	
-	if ( ashe_options( 'featured_links_title_3' ) === '' && ! ashe_is_preview() ) {
+	if ( ashe_options( 'featured_links_title_3' ) === '' ) {
 		$css .= '
 			.featured-link:nth-child(3) .cv-inner {
 			    display: none;
@@ -643,11 +687,8 @@ function ashe_true_false( $option ) {
 	// Gutter
 	$css .= '
 		.blog-grid > li {
-			margin-bottom: ' . $blog_page_gutter_vert . 'px;
-		}
-
-		.blog-grid > li {
 			width: 100%;
+			margin-bottom: ' . $blog_page_gutter_vert . 'px;
 		}
 	';
 
@@ -677,7 +718,7 @@ function ashe_true_false( $option ) {
 	// Blog Page Dropcups
 	if ( ashe_true_false(ashe_options( 'blog_page_show_dropcaps' )) === true ) {
 		$css .= '
-			.post-content > p:first-child:first-letter {	
+			.post-content > p:first-of-type:first-letter {	
 			  font-family: "Playfair Display";
 			  font-weight: 400;
 			  float: left;
@@ -689,7 +730,7 @@ function ashe_true_false( $option ) {
 			}
 
 			@-moz-document url-prefix() {
-				.post-content > p:first-child:first-letter {
+				.post-content > p:first-of-type:first-letter {
 				    margin-top: 10px !important;
 				}
 			}

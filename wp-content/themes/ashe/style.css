@@ -4,11 +4,11 @@ Theme URI: https://wp-royal.com/themes/item-ashe-free/
 Author: Royal Flush
 Author URI: http://wp-royal.com/
 Description: Personal and Multi-Author Free WordPress Blog Theme.  Perfect for personal, lifestyle, food, travel, fashion, corporate, photography and any other kind of amazing blogs.  Well documented and very easy to use even for WordPress beginners. Clean and Modern Responsive design will perfectly showcase your content on any device. You just need to write and be awesome!
-Version: 1.2.6
+Version: 1.3.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 Text Domain: ashe
-Tags: blog, e-commerce, food-and-drink, one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, custom-logo, featured-images, footer-widgets, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+Tags: blog, e-commerce, food-and-drink, one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, flexible-header, full-width-template, custom-menu, custom-logo, featured-images, footer-widgets, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
 */
 
 
@@ -48,6 +48,9 @@ html {
 
 #infscr-loading {
   text-align: center;
+}
+div.entry-header{
+  height: 300px ;
 }
 
 article,
@@ -230,6 +233,18 @@ textarea {
 }
 
 [type="search"] {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important; 
+}
+
+[type="search"]:focus {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important; 
+}
+
+[type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
@@ -310,8 +325,15 @@ h6 {
   line-height: normal;
   clear: both;
 }
+.header-logo a , .site-description
+{
+  color: #ca9b52;
+}
 
-
+.header-logo a
+{
+  font-size: 200px;
+}
 /*--------------------------------------------------------------
 2.0 General Styles & Classes
 --------------------------------------------------------------*/
@@ -377,7 +399,7 @@ html {
   padding-bottom: 40px;
 }
 
-/* Wordpress Default Class */
+/* WordPress Default Class */
 .sticky {
   background: #f7f7f7;
   padding: 40px;
@@ -646,11 +668,6 @@ sup {
   box-shadow: 0px 1px 5px rgba(0,0,0, 0.1);
 }
 
-#top-menu,
-.top-bar-socials {
-  display: inline-block;
-}
-
 #top-menu li {
   position: relative;
 }
@@ -755,6 +772,8 @@ sup {
   display: inline-block;
   margin-top: 15px;
   margin-bottom: 0;
+  font-size: 17px;
+  line-height: 1.1;
 }
 
 .title-tagline-shown .header-logo a:not(.logo-img),
@@ -967,9 +986,16 @@ sup {
   margin-bottom: 3px;
 }
 
+.main-nav-sidebar,
+.main-nav-search {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 #main-nav {
   position: relative;
   z-index: 1100 !important;
+  min-height: 60px;
 }
 
 #main-nav > div {
@@ -1066,11 +1092,13 @@ sup {
 /* Mobile Menu  */
 .mobile-menu-container {
   display: none;
+  clear: both;
 }
 
 .mobile-menu-btn {
   display: none;
   padding: 0 15px;
+  font-size: 18px;
   line-height: 60px;
   cursor: pointer;
 }
@@ -1478,6 +1506,10 @@ sup {
 .post-media iframe, 
 .post-media embed {
   margin: 0 auto;
+}
+
+.post-media img {
+  width: auto;
 }
 
 .post-media img + .entry-audio {
@@ -2550,9 +2582,14 @@ body {
   letter-spacing: 0.5px;
 }
 
+#top-bar .mobile-menu-btn {
+  float: left;
+  line-height: 50px;
+  padding: 0 5px 0;
+}
+
 /* Menu Fonts */
 #main-menu li a {
-  font-family: 'Open Sans';
   font-size: 15px;
   line-height: 60px;
   letter-spacing: 1px;
@@ -2571,7 +2608,6 @@ body {
 }
 
 #mobile-menu li {
-  font-family: 'Open Sans';
   font-size: 15px;
   line-height: 50px;
   letter-spacing: 1px;

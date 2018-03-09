@@ -22,6 +22,7 @@ function ashe_options( $control ) {
 		'main_nav_align' => 'center',
 		'main_nav_show_search' => true,
 		'main_nav_show_sidebar' => true,
+		'main_nav_merge_menu' => false,
 		'featured_slider_label' => false,
 		'featured_slider_display' => 'all',
 		'featured_slider_category' => 'null',
@@ -61,6 +62,8 @@ function ashe_options( $control ) {
 		'social_media_url_3' => '',
 		'social_media_icon_4' => 'pinterest',
 		'social_media_url_4' => '',
+		'typography_logo_family' => 'Open+Sans',
+		'typography_nav_family' => 'Open+Sans',
 		'page_footer_copyright' => '',
 		'preloader_label' => false
 	);

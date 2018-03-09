@@ -111,6 +111,10 @@
 		ashe_customizer_label( 'social_media_icon_3', 'Social Icon #3' );
 		ashe_customizer_label( 'social_media_icon_4', 'Social Icon #4' );
 
+		// Typography
+		ashe_customizer_label( 'typography_logo_family', 'Logo' );
+		ashe_customizer_label( 'typography_nav_family', 'Navigation' );
+
 		// Contditional Logics
 		ashe_customizer_select( 'featured_slider_display', '#customize-control-ashe_options-featured_slider_category', 'category' );
 		ashe_customizer_select( 'blog_page_post_description', '#customize-control-ashe_options-blog_page_excerpt_length,#customize-control-ashe_options-blog_page_grid_excerpt_length', 'excerpt' );

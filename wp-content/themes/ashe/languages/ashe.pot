@@ -165,11 +165,11 @@ msgstr ""
 
 #: inc/about/about-ashe.php:15
 msgid ""
-"Ashe is free personal and multi-author Wordpress Blog theme. It's perfect "
+"Ashe is free personal and multi-author WordPress Blog theme. It's perfect "
 "for any kind of blog: personal, multi-author, food, lifestyle, etc... Is "
 "fully Responsive and Retina Display ready, clean, modern and minimal. Ashe "
 "is WooCommerce compatible, also has RTL support and for sure it's SEO "
-"friendly. Coded with latest Wordpress' standards."
+"friendly. Coded with latest WordPress' standards."
 msgstr ""
 
 #: inc/about/about-ashe.php:23
@@ -210,7 +210,7 @@ msgstr ""
 
 #: inc/about/about-ashe.php:54
 msgid ""
-"If you are a Wordpress beginner it's highly recomended to install the Demo "
+"If you are a WordPress beginner it's highly recomended to install the Demo "
 "Content. This file includes: Menus, Posts, Pages, Widgets, etc. Read More "
 "about demo import in the "
 msgstr ""
@@ -296,7 +296,7 @@ msgstr ""
 
 #: inc/about/about-ashe.php:96
 msgid ""
-"This widget adds a Simple Facebook Page Like Widget into your wordpress "
+"This widget adds a Simple Facebook Page Like Widget into your WordPress "
 "website sidebar within few minutes."
 msgstr ""
 
@@ -411,7 +411,7 @@ msgstr ""
 
 #: inc/about/about-ashe.php:207
 msgid ""
-"The best eCommerce solution for Wordpress websites. Add your own Shop and "
+"The best eCommerce solution for WordPress websites. Add your own Shop and "
 "sell anything from digital Goods to Coconuts."
 msgstr ""
 

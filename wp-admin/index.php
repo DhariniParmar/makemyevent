@@ -130,6 +130,18 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 	</div>
 <?php endif; ?>
 
+<div 
+<?php
+if (function_exists(‘get_wp_category_image’))
+{
+$meta_image = get_wp_category_image($category_id);
+//It will give category/term image url
+}
+
+echo $meta_image; // category/term image url
+ ?>
+ />
+
 	<div id="dashboard-widgets-wrap">
 	<?php wp_dashboard(); ?>
 	</div><!-- dashboard-widgets-wrap -->

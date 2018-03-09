@@ -26,12 +26,6 @@ jQuery(document).ready(function( $ ) {
 		$(this).closest('li').children('.sub-menu-btn-icon').children('i').toggleClass( 'fa-rotate-270' );
 	});
 
-	$( window ).on( 'resize', function() {
-		if ( $('.main-menu-container').css('display') === 'block' ) {
-			$( '.mobile-menu-container' ).css({ 'display' : 'none' });
-		}
-	});
-
 	// Search Form
 	$('.main-nav-icons').after($('.main-nav-search #searchform').remove());
 	var mainNavSearch = $('#main-nav #searchform');
@@ -40,11 +34,11 @@ jQuery(document).ready(function( $ ) {
 
 	$('.main-nav-search').click(function() {
 		if ( mainNavSearch.css('display') === 'none' ) {
-			mainNavSearch.fadeIn();
+			mainNavSearch.show();
 			$('.main-nav-search i:last-of-type').show();
 			$('.main-nav-search i:first-of-type').hide();
 		} else {
-			mainNavSearch.fadeOut();
+			mainNavSearch.hide();
 			$('.main-nav-search i:last-of-type').hide();
 			$('.main-nav-search i:first-of-type').show();
 		}
@@ -93,7 +87,7 @@ jQuery(document).ready(function( $ ) {
 */
 
 	// Sticky Sidebar
-	function stickySidebar() {
+	function asheStickySidebar() {
 		if ( $( '.main-content' ).data('sidebar-sticky') === 1 ) {		
 			var SidebarOffset = 0;
 
@@ -113,16 +107,6 @@ jQuery(document).ready(function( $ ) {
 		}
 	}
 
-	// on Window Resize
-	$( window ).on( 'resize', function() {
-		stickySidebar();
-	});
-
-	// on Load
-	$( window ).on( 'load', function() {
-		stickySidebar();
-	});
-
 	// Sidebar Alt Scroll
 	$('.sidebar-alt').perfectScrollbar({
 		suppressScrollX : true,
@@ -137,9 +121,14 @@ jQuery(document).ready(function( $ ) {
 	});
 
 	// Sidebar Alt Close
-	$('.sidebar-alt-close, .sidebar-alt-close-btn').on('click', function () {
-		$('.sidebar-alt').css( 'left','-'+ $( ".sidebar-alt" ).outerWidth() +'px' );
+	function asheAltSidebarClose() {
+		var leftPosition = parseInt( $( ".sidebar-alt" ).outerWidth(), 10 ) + 30;
+		$('.sidebar-alt').css( 'left','-'+ leftPosition +'px' );
 		$('.sidebar-alt-close').fadeOut( 500 );
+	}
+	
+	$('.sidebar-alt-close, .sidebar-alt-close-btn').on('click', function () {
+		asheAltSidebarClose();
 	});
 
 
@@ -174,6 +163,31 @@ jQuery(document).ready(function( $ ) {
 		});
 
 	}
+
+
+/*
+** Window Resize =====
+*/
+
+	$( window ).on( 'resize', function() {
+
+		if ( $('.mobile-menu-btn').css('display') === 'none' ) {
+			$( '.mobile-menu-container' ).css({ 'display' : 'none' });
+		}
+		
+		asheStickySidebar();
+
+		asheAltSidebarClose();
+	});
+
+
+/*
+** Window Load =====
+*/
+
+	$( window ).on( 'load', function() {
+		asheStickySidebar();
+	});
 
 
 /*
